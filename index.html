@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Electricity Bill Calculator India | EBBillCalculator.in</title>
+    <meta name="description" content="Calculate your estimated electricity bill online based on your state, electricity units and applicable tariff. Get a detailed bill breakdown with EBBillCalculator.in.">
+    
+    <meta property="og:title" content="Electricity Bill Calculator India | EBBillCalculator.in">
+    <meta property="og:description" content="Calculate your estimated electricity bill online based on your state, electricity units and applicable tariff. Get a detailed bill breakdown.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ebbillcalculator.in/">
+    <meta property="og:site_name" content="EBBillCalculator.in">
+    
+    <link rel="canonical" href="https://ebbillcalculator.in/">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="brand-logo" aria-label="EBBillCalculator.in Home">
+                <img src="favicon.svg" alt="Logo" class="logo-icon">
+                <span class="logo-text">EBBillCalculator<span class="logo-dot">.in</span></span>
+            </a>
+
+            <nav class="nav-menu" id="navMenu" aria-label="Main Navigation">
+                <a href="about.html" class="nav-link">About</a>
+            </nav>
+
+            <div class="header-actions">
+                <button type="button" id="mobileMenuToggle" class="hamburger-btn" aria-label="Toggle Navigation Menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="mainContent">
+
+        <section class="hero-section">
+            <div class="container hero-container">
+                <h1 class="hero-title">Electricity Bill Calculator</h1>
+                <p class="hero-subtitle">
+                    Calculate your estimated monthly electricity bill based on your state and electricity usage.
+                </p>
+            </div>
+        </section>
+
+        <section class="calculator-section" id="calculator">
+            <div class="container calc-container">
+                <div class="calculator-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Calculate Your Monthly Bill</h2>
+                        <p class="card-subtitle">Select state tariff details and consumption to view itemized bill breakdown.</p>
+                    </div>
+
+                    <form id="billForm" class="calc-form" novalidate>
+                        <div class="form-compact-grid">
+                            <div class="form-group">
+                                <label for="stateSelect" class="form-label">Select State</label>
+                                <div class="select-wrapper">
+                                    <select id="stateSelect" class="form-input" required>
+                                    </select>
+                                </div>
+                                <span class="error-msg" id="stateError">Please select a state</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="categorySelect" class="form-label">Consumer Category</label>
+                                <div class="select-wrapper">
+                                    <select id="categorySelect" class="form-input" required>
+                                        <option value="domestic" selected>Domestic / Residential (LMV-1)</option>
+                                        <option value="commercial">Commercial / Non-Domestic (LMV-2)</option>
+                                        <option value="industrial">Industrial (LMV-6)</option>
+                                        <option value="agriculture">Agriculture / Agricultural Pump (LMV-5)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="loadInput" class="form-label">Sanctioned Load (in kW)</label>
+                                <div class="input-wrapper">
+                                    <input type="number" id="loadInput" class="form-input" placeholder="e.g. 1.0" min="0.5" max="100" step="0.5" value="1.0" required>
+                                    <span class="input-unit">kW</span>
+                                </div>
+                                <span class="error-msg" id="loadError">Please enter valid load in kW</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="unitsInput" class="form-label">Units Consumed (Monthly)</label>
+                                <div class="input-wrapper">
+                                    <input type="number" id="unitsInput" class="form-input" placeholder="e.g. 250" min="0" step="1" required>
+                                    <span class="input-unit">kWh</span>
+                                </div>
+                                <span class="error-msg" id="unitsError">Please enter valid electricity units</span>
+                            </div>
+                        </div>
+
+                        <div class="solar-netmetering-box">
+                            <label class="solar-checkbox-label">
+                                <input type="checkbox" id="solarToggle" class="solar-checkbox">
+                                <span class="solar-toggle-slider"></span>
+                                <span class="solar-label-text">
+                                    ☀️ Enable Rooftop Solar Net Metering
+                                </span>
+                            </label>
+                            <div id="solarInputContainer" class="solar-input-field hidden">
+                                <label for="solarUnitsInput" class="form-label solar-input-label">Solar Generation Units (Monthly)</label>
+                                <div class="input-wrapper">
+                                    <input type="number" id="solarUnitsInput" class="form-input" placeholder="e.g. 100" min="0" step="1" value="0">
+                                    <span class="input-unit">kWh</span>
+                                </div>
+                                <span class="solar-hint">Solar units will be subtracted directly from total consumed units for net billing.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" id="calculateBtn" class="btn btn-primary btn-full">
+                                <span>Calculate Bill</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="disclaimer-banner">
+                        <svg class="info-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                        <p class="disclaimer-text">
+                            <strong>Note:</strong> Actual electricity bills may vary depending on your electricity distribution company (DISCOM), tariff category, fixed charges, taxes, subsidies and other applicable charges.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="result-section hidden" id="resultSection">
+            <div class="container result-container">
+                <div class="result-card printable-bill" id="printableArea">
+                    
+                    <div class="bill-header">
+                        <div class="bill-brand">
+                            <img src="favicon.svg" alt="Logo" class="logo-icon">
+                            <span class="bill-logo-name">EBBillCalculator<span class="logo-dot">.in</span></span>
+                        </div>
+                    </div>
+
+                    <div class="bill-meta-grid">
+                        <div class="meta-item">
+                            <span class="meta-label">State</span>
+                            <span class="meta-value" id="resState">-</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Category & Load</span>
+                            <span class="meta-value" id="resCategoryLoad">-</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Units (Consumed / Net)</span>
+                            <span class="meta-value" id="resUnits">-</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Generated On</span>
+                            <span class="meta-value" id="resGenDateTime">-</span>
+                        </div>
+                    </div>
+
+                    <div class="bill-divider"></div>
+
+                    <div class="bill-breakdown">
+                        <h3 class="breakdown-heading">Charge Details</h3>
+                        <table class="bill-table">
+                            <tbody>
+                                <tr id="solarBreakdownRow" class="solar-row hidden">
+                                    <td>
+                                        <div class="charge-name text-success">
+                                            Solar Net Metering Deduction
+                                        </div>
+                                        <span class="charge-sub" id="solarBreakdownSub">Solar Generation: 0 kWh</span>
+                                    </td>
+                                    <td class="charge-amount text-success" id="resSolarSavings">-₹0.00</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="charge-name">
+                                            Energy Charges
+                                            <button type="button" class="btn-toggle-details" id="toggleDetailsBtn" aria-expanded="false">
+                                                (View Slabs)
+                                            </button>
+                                        </div>
+                                        <span class="charge-sub" id="resEnergySub">Calculated on net billed units</span>
+                                    </td>
+                                    <td class="charge-amount" id="resEnergyCharges">₹0.00</td>
+                                </tr>
+                                <tr class="slab-details-row hidden" id="slabDetailsRow">
+                                    <td colspan="2">
+                                        <div class="slab-details-box" id="slabDetailsContent">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="charge-name">Fixed Charges</div>
+                                        <span class="charge-sub" id="resFixedSub">Monthly load demand fee</span>
+                                    </td>
+                                    <td class="charge-amount" id="resFixedCharges">₹0.00</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="charge-name">Electricity Duty</div>
+                                        <span class="charge-sub" id="resDutySub">State Tax</span>
+                                    </td>
+                                    <td class="charge-amount" id="resDuty">₹0.00</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="charge-name">Other Surcharges</div>
+                                        <span class="charge-sub">Meter rent & fuel adjustment charges</span>
+                                    </td>
+                                    <td class="charge-amount" id="resOtherCharges">₹0.00</td>
+                                </tr>
+                                <tr id="subsidyRow" class="subsidy-row hidden">
+                                    <td>
+                                        <div class="charge-name text-success">Government Subsidy</div>
+                                        <span class="charge-sub">State applicable concession</span>
+                                    </td>
+                                    <td class="charge-amount text-success" id="resSubsidy">-₹0.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="bill-total-box">
+                        <div class="total-label">Estimated Total Bill</div>
+                        <div class="total-amount" id="resTotalAmount">₹0</div>
+                    </div>
+
+                    <div class="bill-disclaimer">
+                        <p>This is an estimated electricity bill generated by EBillCalculator.in. Actual charges may vary according to the applicable electricity tariff and distribution company.</p>
+                    </div>
+                </div>
+
+                <div class="result-actions no-print">
+                    <button type="button" id="recalculateBtn" class="btn btn-outline">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="1 4 1 10 7 10"></polyline>
+                            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                        </svg>
+                        <span>Recalculate</span>
+                    </button>
+
+                    <button type="button" id="downloadBillBtn" class="btn btn-primary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        <span>Download Bill</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section how-to-use-section" id="how-to-use">
+            <div class="container how-to-use-container">
+                <div class="section-header">
+                    <h2 class="section-title">How to Use the Electricity Bill Calculator</h2>
+                    <p class="section-subtitle">Follow these simple steps to calculate your estimated monthly electricity bill.</p>
+                </div>
+
+                <div class="steps-list">
+                    <div class="step-item">
+                        <h3 class="step-heading">Step 1: Select Your State</h3>
+                        <p class="step-paragraph">Choose your state from the dropdown menu. By default, <strong>Uttar Pradesh</strong> is pre-selected. Choosing your state automatically loads the official tariff structure, telescopic slabs, and state electricity duty rates.</p>
+                    </div>
+
+                    <div class="step-item">
+                        <h3 class="step-heading">Step 2: Choose Consumer Category & Sanctioned Load</h3>
+                        <p class="step-paragraph">Select your consumer tariff category (Domestic/Residential, Commercial, Industrial, or Agriculture) and enter your Sanctioned Load in kW (e.g., 1.0 kW, 2.0 kW). This determines the fixed monthly demand charges on your bill.</p>
+                    </div>
+
+                    <div class="step-item">
+                        <h3 class="step-heading">Step 3: Enter Monthly Consumed Units</h3>
+                        <p class="step-paragraph">Enter your total electricity consumption for the month in kWh (Units). You can also use the quick preset buttons (100, 200, 350, 500) to fill common unit values instantly.</p>
+                    </div>
+
+                    <div class="step-item">
+                        <h3 class="step-heading">Step 4: Enable Rooftop Solar Net Metering (Optional)</h3>
+                        <p class="step-paragraph">If you have rooftop solar panels installed, tick the <strong>Enable Rooftop Solar Net Metering</strong> checkbox and enter your monthly solar generation in kWh. The solar units will be deducted directly from your total consumption for net billing.</p>
+                    </div>
+
+                    <div class="step-item">
+                        <h3 class="step-heading">Step 5: Click Calculate Bill</h3>
+                        <p class="step-paragraph">Click the <strong>Calculate Bill</strong> button to generate your itemized bill breakdown. You will see energy charges, slab breakdown, fixed charges, state taxes, solar net savings, and the final estimated total bill.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section how-it-works-section" id="how-it-works">
+            <div class="container how-it-works-container">
+                <div class="single-card-box">
+                    <div class="section-header" style="margin-bottom: 1.5rem;">
+                        <h2 class="section-title">How Does the Electricity Bill Calculator Work?</h2>
+                        <p class="section-subtitle">Understanding the formula behind state electricity tariff calculations in India.</p>
+                    </div>
+
+                    <div class="seo-article-content">
+                        <div class="article-block">
+                            <h3 class="article-heading">1. Telescopic Tariff Slab Calculation</h3>
+                            <p class="article-paragraph">Electricity distribution companies (DISCOMs) across Indian states follow a <strong>telescopic slab tariff model</strong>. Under this structure, your monthly electricity usage (kWh) is divided into progressive consumption brackets (such as 0–100 units, 101–200 units, 201–300 units, and 300+ units). Energy consumed in lower slabs is billed at cheaper base rates, while higher consumption tiers incur progressively higher per-unit rates to promote energy conservation.</p>
+                        </div>
+
+                        <div class="article-block">
+                            <h3 class="article-heading">2. Sanctioned Load & Fixed Demand Charges</h3>
+                            <p class="article-paragraph">Apart from energy charges per unit, every electricity connection incurs a mandatory monthly <strong>Fixed Charge (Demand Fee)</strong>. This charge is calculated based on your approved Sanctioned Load (measured in kW) and your selected tariff category (Domestic, Commercial, Industrial, or Agriculture). The calculator multiplies your connection load by the official state DISCOM fixed rate to determine your monthly fixed charge.</p>
+                        </div>
+
+                        <div class="article-block">
+                            <h3 class="article-heading">3. State Electricity Duty & Statutory Taxes</h3>
+                            <p class="article-paragraph">State governments impose statutory taxes known as <strong>Electricity Duty</strong> on power bills. Depending on the state regulatory commission order (e.g., UPPCL in Uttar Pradesh, MSEDCL in Maharashtra, BESCOM in Karnataka), electricity duty is computed as a fixed percentage or flat rate applied over the combined total of energy charges and fixed demand charges.</p>
+                        </div>
+
+                        <div class="article-block">
+                            <h3 class="article-heading">4. Rooftop Solar Net Metering Deduction</h3>
+                            <p class="article-paragraph">For consumers with grid-connected rooftop solar PV systems, <strong>Net Metering</strong> allows solar electricity generated at home to be credited against grid electricity consumption. The calculator deducts monthly solar generation (kWh) directly from your total gross consumption to arrive at your <em>Net Billed Units</em>. Energy charges are then evaluated exclusively on these net units, maximizing your monthly monetary savings.</p>
+                        </div>
+
+                        <div class="article-block">
+                            <h3 class="article-heading">5. Government Subsidies & Final Bill Estimation</h3>
+                            <p class="article-paragraph">Applicable state government power subsidies (such as free unit allowances or slab concessions) are automatically factored into the total bill. By combining net energy charges, fixed demand fees, electricity duty, and deducting eligible government subsidies, our online calculator generates an instant, accurate, itemized electricity bill estimate.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section faq-section" id="faq">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                    <p class="section-subtitle">Find answers to common questions about electricity bills and tariff calculations.</p>
+                </div>
+
+                <div class="faq-accordion">
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-trigger" aria-expanded="false">
+                            <span class="faq-question">1. How is my electricity bill calculated?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-content">
+                            <p>Your electricity bill is calculated by multiplying your consumed units (kWh) with the applicable slab tariff rates of your state, plus fixed monthly charges, electricity duty tax percentage, meter rent, and fuel adjustment surcharges minus any eligible government subsidies.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-trigger" aria-expanded="false">
+                            <span class="faq-question">2. What are electricity tariff slabs?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-content">
+                            <p>Tariff slabs are consumption brackets established by Electricity Regulatory Commissions. Lower consumption brackets (e.g., 0–100 units) have lower per-unit costs, whereas higher brackets (e.g., above 300 units) incur higher rates to encourage energy conservation.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-trigger" aria-expanded="false">
+                            <span class="faq-question">3. Does the calculator work for all Indian states?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-content">
+                            <p>Yes, EBillCalculator.in includes tariff structures for major Indian states including Uttar Pradesh, Maharashtra, Bihar, Delhi, Tamil Nadu, Karnataka, Gujarat, West Bengal, Rajasthan, Punjab, Kerala, Madhya Pradesh, Telangana, Andhra Pradesh, Haryana, Odisha, and more.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-trigger" aria-expanded="false">
+                            <span class="faq-question">4. Does the calculator include fixed charges?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-content">
+                            <p>Yes, fixed monthly demand charges (meter charges or connected load charges) specified under each state's domestic tariff schedule are included in the bill calculation.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-trigger" aria-expanded="false">
+                            <span class="faq-question">5. Does the calculator include electricity duty?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-content">
+                            <p>Yes, state electricity duty (statutory tax imposed by state governments) is calculated based on the official percentage or flat rate applicable in your selected state.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-trigger" aria-expanded="false">
+                            <span class="faq-question">6. Why can my actual bill be different?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-content">
+                            <p>Actual electricity bills can vary due to specific DISCOM variations, seasonal Fuel Supply Adjustment (FSA) charges, power factor surcharges, arrear adjustments, prompt payment discounts, or municipal taxes not captured in base residential slabs.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-trigger" aria-expanded="false">
+                            <span class="faq-question">7. Can I download my estimated bill?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-content">
+                            <p>Yes, once your bill estimate is generated, click the "Download Bill" button to open a print-ready clean invoice that you can directly print or save as a PDF document on your device.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-trigger" aria-expanded="false">
+                            <span class="faq-question">8. How often should electricity tariff data be updated?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-content">
+                            <p>Electricity regulatory commissions revise tariff orders annually or periodically. Our database is routinely structured to allow rapid updates whenever DISCOMs issue updated tariff notifications.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="brand-logo footer-logo">
+                        <img src="favicon.svg" alt="Logo" class="logo-icon">
+                        <span class="logo-text">EBBillCalculator<span class="logo-dot">.in</span></span>
+                    </a>
+                    <p class="footer-tagline">Simple tools to understand and calculate your electricity usage.</p>
+                </div>
+
+                <ul class="footer-links">
+                    <li><a href="about.html" class="footer-link">About</a></li>
+                    <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+                    <li><a href="terms.html" class="footer-link">Terms & Conditions</a></li>
+                    <li><a href="disclaimer.html" class="footer-link">Disclaimer</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 EBBillCalculator.in. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="modalOverlay" class="modal-overlay hidden" aria-hidden="true" role="dialog">
+        <div class="modal-card">
+            <button type="button" class="modal-close" id="modalCloseBtn" aria-label="Close dialog">&times;</button>
+            <div id="modalBody" class="modal-body">
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
