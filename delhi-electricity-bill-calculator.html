@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Delhi Electricity Bill Calculator 2026 - BSES & TPDDL Subsidy Bill Check</title>
+    <meta name="description" content="Calculate your Delhi power bill online with BSES Yamuna, BSES Rajdhani & Tata Power DDL tariffs. Includes 200 free units subsidy, 5% duty & solar net metering.">
+    
+    <meta property="og:title" content="Delhi Electricity Bill Calculator 2026 - BSES & TPDDL Subsidy Bill Check">
+    <meta property="og:description" content="Calculate your Delhi electricity bill online. Factoring in 200 free units subsidy, DERC telescopic tariffs, and demand charges.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ebbillcalculator.in/delhi-electricity-bill-calculator.html">
+    <meta property="og:site_name" content="EBBillCalculator.in">
+    
+    <link rel="canonical" href="https://ebbillcalculator.in/delhi-electricity-bill-calculator.html">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6P9LP246GM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-6P9LP246GM');
+    </script>
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": "https://ebbillcalculator.in/delhi-electricity-bill-calculator.html#webapp",
+          "name": "Delhi Electricity Bill Calculator",
+          "url": "https://ebbillcalculator.in/delhi-electricity-bill-calculator.html",
+          "applicationCategory": "UtilityApplication",
+          "operatingSystem": "All",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR"
+          },
+          "description": "Calculate Delhi power bills for BSES Rajdhani, BSES Yamuna and Tata Power DDL including 200 units free power subsidy and solar net metering."
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://ebbillcalculator.in/delhi-electricity-bill-calculator.html#breadcrumbs",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://ebbillcalculator.in/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Delhi Electricity Bill Calculator",
+              "item": "https://ebbillcalculator.in/delhi-electricity-bill-calculator.html"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://ebbillcalculator.in/delhi-electricity-bill-calculator.html#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How does the Delhi 200 free units electricity subsidy work?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "In Delhi, domestic consumers using up to 200 units per month receive 100% subsidy on energy charges (Zero Electricity Bill). For consumption between 201 and 400 units, a flat subsidy of ₹800 is credited."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What are the DERC tariff slabs in Delhi?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Delhi DERC domestic slabs are: 0-200 units at ₹3.00/unit, 201-400 units at ₹4.50/unit, 401-800 units at ₹6.50/unit, 801-1200 units at ₹7.00/unit, and above 1200 units at ₹8.00/unit."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Which DISCOMs operate in Delhi?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Delhi is served by BSES Rajdhani Power Limited (BRPL) in South and West Delhi, BSES Yamuna Power Limited (BYPL) in Central and East Delhi, Tata Power-DDL (TPDDL) in North Delhi, and NDMC in Lutyens Delhi."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body data-state="Delhi">
+
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="brand-logo" aria-label="EBBillCalculator.in Home">
+                <img src="favicon.svg" alt="Logo" class="logo-icon">
+                <span class="logo-text">EBBillCalculator<span class="logo-dot">.in</span></span>
+            </a>
+
+            <nav class="nav-menu" id="navMenu" aria-label="Main Navigation">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#state-calculators" class="nav-link">State Calculators</a>
+                <a href="about.html" class="nav-link">About</a>
+            </nav>
+
+            <div class="header-actions">
+                <button type="button" id="mobileMenuToggle" class="hamburger-btn" aria-label="Toggle Navigation Menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container breadcrumb-container">
+        <ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a href="index.html" itemprop="item"><span itemprop="name">Home</span></a>
+                <meta itemprop="position" content="1">
+            </li>
+            <li class="separator">/</li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <span class="current" itemprop="name">Delhi Electricity Bill Calculator</span>
+                <meta itemprop="position" content="2">
+            </li>
+        </ol>
+    </div>
+
+    <main id="mainContent">
+
+        <section class="hero-section">
+            <div class="container hero-container">
+                <h1 class="hero-title">Delhi Electricity Bill Calculator 2026</h1>
+                <p class="hero-subtitle">
+                    Estimate your BSES Rajdhani, BSES Yamuna, or Tata Power DDL electricity bill. Includes Delhi Government 200 free units subsidy calculation.
+                </p>
+            </div>
+        </section>
+
+        <section class="calculator-section" id="calculator">
+            <div class="container calc-container">
+                <div class="calculator-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Calculate Delhi Electricity Bill</h2>
+                        <p class="card-subtitle">Enter your monthly units and sanctioned load to check your subsidized bill.</p>
+                    </div>
+
+                    <form id="billForm" class="calc-form" novalidate>
+                        <div class="form-compact-grid">
+                            <div class="form-group">
+                                <label for="stateSelect" class="form-label">State / UT</label>
+                                <div class="select-wrapper">
+                                    <select id="stateSelect" class="form-input" required>
+                                        <option value="Delhi" selected>Delhi</option>
+                                    </select>
+                                </div>
+                                <span class="error-msg" id="stateError">Please select a state</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="categorySelect" class="form-label">Consumer Category</label>
+                                <div class="select-wrapper">
+                                    <select id="categorySelect" class="form-input" required>
+                                        <option value="domestic" selected>Domestic Residential</option>
+                                        <option value="commercial">Commercial / Non-Domestic</option>
+                                        <option value="industrial">Industrial</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="loadInput" class="form-label">Sanctioned Load (kW)</label>
+                                <div class="input-wrapper">
+                                    <input type="number" id="loadInput" class="form-input" placeholder="e.g. 2.0" min="0.5" max="100" step="0.5" value="2.0" required>
+                                    <span class="input-unit">kW</span>
+                                </div>
+                                <span class="error-msg" id="loadError">Please enter valid load in kW</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="unitsInput" class="form-label">Units Consumed (Monthly)</label>
+                                <div class="input-wrapper">
+                                    <input type="number" id="unitsInput" class="form-input" placeholder="e.g. 180" min="0" step="1" required>
+                                    <span class="input-unit">kWh</span>
+                                </div>
+                                <span class="error-msg" id="unitsError">Please enter valid electricity units</span>
+                            </div>
+                        </div>
+
+                        <div class="solar-netmetering-box">
+                            <label class="solar-checkbox-label">
+                                <input type="checkbox" id="solarToggle" class="solar-checkbox">
+                                <span class="solar-toggle-slider"></span>
+                                <span class="solar-label-text">
+                                    ☀️ Enable Rooftop Solar Net Metering (Delhi Solar Policy)
+                                </span>
+                            </label>
+                            <div id="solarInputContainer" class="solar-input-field hidden">
+                                <label for="solarUnitsInput" class="form-label solar-input-label">Solar Generation Units (Monthly)</label>
+                                <div class="input-wrapper">
+                                    <input type="number" id="solarUnitsInput" class="form-input" placeholder="e.g. 150" min="0" step="1" value="0">
+                                    <span class="input-unit">kWh</span>
+                                </div>
+                                <span class="solar-hint">Solar units will be deducted directly from your gross consumption for net billing.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" id="calculateBtn" class="btn btn-primary btn-full">
+                                <span>Calculate Delhi Bill</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="disclaimer-banner">
+                        <svg class="info-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                        <p class="disclaimer-text">
+                            <strong>Note:</strong> Under Delhi Government power policy, consumers opted-in for power subsidy with monthly usage up to 200 units receive a zero energy bill.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="result-section hidden" id="resultSection">
+            <div class="container result-container">
+                <div class="result-card printable-bill" id="printableArea">
+                    <div class="bill-header">
+                        <div class="bill-brand">
+                            <img src="favicon.svg" alt="Logo" class="logo-icon">
+                            <span class="bill-logo-name">EBBillCalculator<span class="logo-dot">.in</span></span>
+                        </div>
+                    </div>
+
+                    <div class="bill-meta-grid">
+                        <div class="meta-item">
+                            <span class="meta-label">State & DISCOM</span>
+                            <span class="meta-value" id="resState">Delhi (BSES/TPDDL)</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Category & Load</span>
+                            <span class="meta-value" id="resCategoryLoad">-</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Units (Consumed / Net)</span>
+                            <span class="meta-value" id="resUnits">-</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Generated On</span>
+                            <span class="meta-value" id="resGenDateTime">-</span>
+                        </div>
+                    </div>
+
+                    <div class="bill-divider"></div>
+
+                    <div class="bill-breakdown">
+                        <h3 class="breakdown-heading">Charge Details</h3>
+                        <table class="bill-table">
+                            <tbody>
+                                <tr id="solarBreakdownRow" class="solar-row hidden">
+                                    <td>
+                                        <div class="charge-name text-success">
+                                            Solar Net Metering Deduction
+                                        </div>
+                                        <span class="charge-sub" id="solarBreakdownSub">Solar Generation: 0 kWh</span>
+                                    </td>
+                                    <td class="charge-amount text-success" id="resSolarSavings">-₹0.00</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="charge-name">
+                                            Energy Charges
+                                            <button type="button" class="btn-toggle-details" id="toggleDetailsBtn" aria-expanded="false">
+                                                (View Slabs)
+                                            </button>
+                                        </div>
+                                        <span class="charge-sub" id="resEnergySub">Calculated on net billed units</span>
+                                    </td>
+                                    <td class="charge-amount" id="resEnergyCharges">₹0.00</td>
+                                </tr>
+                                <tr class="slab-details-row hidden" id="slabDetailsRow">
+                                    <td colspan="2">
+                                        <div class="slab-details-box" id="slabDetailsContent"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="charge-name">Fixed Charges</div>
+                                        <span class="charge-sub" id="resFixedSub">Monthly demand charge</span>
+                                    </td>
+                                    <td class="charge-amount" id="resFixedCharges">₹0.00</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="charge-name">Electricity Duty</div>
+                                        <span class="charge-sub" id="resDutySub">Delhi State Tax (5%)</span>
+                                    </td>
+                                    <td class="charge-amount" id="resDuty">₹0.00</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="charge-name">Pension & Regulatory Surcharge</div>
+                                        <span class="charge-sub">Statutory DISCOM surcharges</span>
+                                    </td>
+                                    <td class="charge-amount" id="resOtherCharges">₹0.00</td>
+                                </tr>
+                                <tr id="subsidyRow" class="subsidy-row hidden">
+                                    <td>
+                                        <div class="charge-name text-success">Delhi Government Power Subsidy</div>
+                                        <span class="charge-sub">Free power concession (0-200 units / ₹800 subsidy)</span>
+                                    </td>
+                                    <td class="charge-amount text-success" id="resSubsidy">-₹0.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="bill-total-box">
+                        <div class="total-label">Estimated Total Bill</div>
+                        <div class="total-amount" id="resTotalAmount">₹0</div>
+                    </div>
+
+                    <div class="bill-disclaimer">
+                        <p>This is an estimated electricity bill generated by EBBillCalculator.in based on official DERC tariff schedules and applicable subsidies.</p>
+                    </div>
+                </div>
+
+                <div class="result-actions no-print">
+                    <button type="button" id="recalculateBtn" class="btn btn-outline">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="1 4 1 10 7 10"></polyline>
+                            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                        </svg>
+                        <span>Recalculate</span>
+                    </button>
+
+                    <button type="button" id="downloadBillBtn" class="btn btn-primary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        <span>Download Bill</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Informational Content -->
+        <section class="section">
+            <div class="container">
+                <div class="single-card-box">
+                    <div class="section-header">
+                        <h2 class="section-title">DERC Domestic Tariff Slabs (Delhi)</h2>
+                        <p class="section-subtitle">Official base tariff slabs approved by the Delhi Electricity Regulatory Commission.</p>
+                    </div>
+
+                    <div class="tariff-table-box">
+                        <div class="tariff-table-title">Delhi Residential Power Tariff Rates</div>
+                        <table class="tariff-styled-table">
+                            <thead>
+                                <tr>
+                                    <th>Consumption Slab</th>
+                                    <th>Rate per Unit (kWh)</th>
+                                    <th>Subsidy Applicable</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>0 - 200 Units</td>
+                                    <td>₹3.00 / unit</td>
+                                    <td><span class="badge-tag badge-free">100% Free Subsidy</span></td>
+                                </tr>
+                                <tr>
+                                    <td>201 - 400 Units</td>
+                                    <td>₹4.50 / unit</td>
+                                    <td><span class="badge-tag badge-info">₹800 Bill Subsidy</span></td>
+                                </tr>
+                                <tr>
+                                    <td>401 - 800 Units</td>
+                                    <td>₹6.50 / unit</td>
+                                    <td>None</td>
+                                </tr>
+                                <tr>
+                                    <td>801 - 1200 Units</td>
+                                    <td>₹7.00 / unit</td>
+                                    <td>None</td>
+                                </tr>
+                                <tr>
+                                    <td>Above 1200 Units</td>
+                                    <td>₹8.00 / unit</td>
+                                    <td>None</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="seo-article-content">
+                        <div class="article-block">
+                            <h3 class="article-heading">How Delhi Electricity Subsidy is Applied</h3>
+                            <p class="article-paragraph">
+                                Delhi consumers who have opted into the voluntary power subsidy scheme enjoy:
+                            </p>
+                            <ul>
+                                <li><strong>Up to 200 units:</strong> Entire energy charges are waived off by the Delhi government, resulting in a zero energy bill.</li>
+                                <li><strong>201 to 400 units:</strong> A direct financial subsidy of up to ₹800 is deducted from the bill amount.</li>
+                                <li><strong>Above 400 units:</strong> Full telescopic slab tariffs apply without any state subsidy.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQs -->
+        <section class="section faq-section" id="faq">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Delhi Electricity Bill FAQs</h2>
+                    <p class="section-subtitle">Answers to common queries regarding Delhi power bills.</p>
+                </div>
+
+                <div class="faq-accordion">
+                    <div class="faq-item">
+                        <button type="button" class="faq-trigger" aria-expanded="false">
+                            <span class="faq-question">1. How to get zero electricity bill in Delhi?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-content">
+                            <p>To get a zero bill in Delhi, ensure your monthly consumption stays at or below 200 kWh (units) and make sure you have applied for the Delhi Government Electricity Subsidy through your DISCOM or via WhatsApp/SMS registration.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-trigger" aria-expanded="false">
+                            <span class="faq-question">2. How to pay BSES Rajdhani or Yamuna bill online?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-content">
+                            <p>You can pay your BSES bill through the BSES Delhi website (bsesdelhi.com), BSES Mobile App, Paytm, Google Pay, or through BBPS (Bharat Bill Payment System) using your 9-digit CA Number.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-trigger" aria-expanded="false">
+                            <span class="faq-question">3. What is PPAC surcharge in Delhi?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-content">
+                            <p>PPAC stands for Power Purchase Adjustment Cost, a regulatory surcharge permitted by DERC to compensate DISCOMs for fluctuating coal and gas prices used in power generation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Other States -->
+        <section class="section state-grid-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Other State Electricity Bill Calculators</h2>
+                    <p class="section-subtitle">Select other states to calculate your power bill.</p>
+                </div>
+                <div class="state-grid">
+                    <a href="uttar-pradesh-electricity-bill-calculator.html" class="state-card-link">
+                        <div class="state-card-header"><span class="state-card-title">Uttar Pradesh</span><span class="badge-tag badge-info">UPPCL</span></div>
+                        <p class="state-card-discom">PVVCL, DVVCL, MVVCL, PuVVCL & KESCO. Slabs ₹5.50 - ₹7.00/unit, 5% Duty.</p>
+                        <span class="state-card-badge">Open UP Calculator &rarr;</span>
+                    </a>
+                    <a href="haryana-electricity-bill-calculator.html" class="state-card-link">
+                        <div class="state-card-header"><span class="state-card-title">Haryana</span><span class="badge-tag badge-info">UHBVN/DHBVN</span></div>
+                        <p class="state-card-discom">UHBVN & DHBVN. Slabs from ₹2.00 to ₹7.10/unit, MMC fixed demand charge.</p>
+                        <span class="state-card-badge">Open Haryana Calculator &rarr;</span>
+                    </a>
+                    <a href="punjab-electricity-bill-calculator.html" class="state-card-link">
+                        <div class="state-card-header"><span class="state-card-title">Punjab</span><span class="badge-tag badge-free">300 Units Free</span></div>
+                        <p class="state-card-discom">PSPCL Domestic Supply. 300 free units/month subsidy, 13% statutory Duty.</p>
+                        <span class="state-card-badge">Open Punjab Calculator &rarr;</span>
+                    </a>
+                    <a href="maharashtra-electricity-bill-calculator.html" class="state-card-link">
+                        <div class="state-card-header"><span class="state-card-title">Maharashtra</span><span class="badge-tag badge-info">MSEDCL</span></div>
+                        <p class="state-card-discom">Mahavitaran, Adani, Tata Power & BEST. Slabs ₹4.41 - ₹15.57/unit, 16% Duty.</p>
+                        <span class="state-card-badge">Open Maharashtra Calculator &rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="brand-logo footer-logo">
+                        <img src="favicon.svg" alt="Logo" class="logo-icon">
+                        <span class="logo-text">EBBillCalculator<span class="logo-dot">.in</span></span>
+                    </a>
+                    <p class="footer-tagline">Simple tools to understand and calculate your electricity usage across India.</p>
+                </div>
+
+                <ul class="footer-links">
+                    <li><a href="index.html" class="footer-link">Home</a></li>
+                    <li><a href="about.html" class="footer-link">About</a></li>
+                    <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+                    <li><a href="terms.html" class="footer-link">Terms & Conditions</a></li>
+                    <li><a href="disclaimer.html" class="footer-link">Disclaimer</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 EBBillCalculator.in. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>window.PAGE_STATE = "Delhi";</script>
+    <script src="script.js"></script>
+</body>
+</html>
